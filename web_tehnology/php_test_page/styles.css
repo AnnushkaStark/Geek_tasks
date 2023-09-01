@@ -1,0 +1,38 @@
+.body{background-color: rgb(218, 187, 149);
+}
+.h1{text-align: center;
+color: rgb(90, 83, 83);
+text-shadow :gray 2px 2px  3px;
+font-size: 300%;
+font-family: sans-serif;}
+
+.img{height: 200px;
+     width: 250px;
+    }
+
+.div{border-color: grey;
+    border-top: solid;
+    border-top-color:grey;
+    border-bottom: solid;
+    border-bottom-color:grey;
+    background-color: whitesmoke;
+    margin: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+    box-shadow: rgb(199, 187, 187) 3px 3px 3px 3px}
+
+.footer{text-align: center;
+    font-family: sans-serif;
+      color: gray;}
+
+.p{font-family: sans-serif;
+   font-style: italic;
+   color: rgb(71, 70, 70);
+   margin-left:10px;
+}
+    
+.p1{font-family: sans-serif;
+    font-style: italic;
+    font-size: 200%;
+    color: rgb(71, 70, 70);
+    margin-left:10px;}
