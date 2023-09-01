@@ -1,0 +1,52 @@
+{
+    "person": {
+        "surname": "Иванов",
+        "name": "Иван",
+        "patronymic": "Иванович",
+        "birthdate": "01.01.1990",
+        "birthplace": "Москва",
+        "adress": {
+            "street": "Арбат",
+            "home": "12",
+            "flat": "32"
+        },
+        "family": {
+            "wife": {
+                "name": "Светлана",
+                "surname": "Иванова",
+                "patronymic": "Александровна",
+                "birthadate": "02.02.1990",
+                "birthplace": "Санкт-Петербург"
+            },
+            "dauther": {
+                "name": "Екатерина",
+                "surname": "Иванова",
+                "patronymic": "Ивановна",
+                "birthadate": "03.03.2015",
+                "birthplace": "Москва"
+            },
+            "sun": {
+                "name": "Василий",
+                "surname": "Иванов",
+                "patronymic": "Иванович",
+                "birthadate": "04.04.2020",
+                "birthplace": "Мосвка"
+            }
+        },
+        "pets": {
+            "cat": {
+                "name": "Барсик",
+                "years_old": "3"
+            },
+            "dog": {
+                "name": "Лесси",
+                "years_old": "4"
+            },
+            "parrot": {
+                "name": "Кеша",
+                "years_old": "1"
+            }
+        },
+        "phone": "8 926 766 48 48"
+    }
+}

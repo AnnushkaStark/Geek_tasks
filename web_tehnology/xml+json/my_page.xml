@@ -1,0 +1,55 @@
+<person>
+<surname>Иванов</surname>
+
+    <name>Иван</name>
+
+    <patronymic>Иванович</patronymic>
+
+    <birthdate>01.01.1990</birthdate>
+
+    <birthplace>Москва</birthplace>
+    <adress>
+        <street>Арбат</street>
+        <home>12</home>
+        <flat>32</flat>
+    </adress>
+    <family>
+        <wife>
+            <name>Светлана</name>
+            <surname>Иванова</surname>
+            <patronymic>Александровна</patronymic>
+            <birthadate>02.02.1990</birthadate>
+            <birthplace>Санкт-Петербург</birthplace>
+        </wife>
+        <dauther>
+            <name>Екатерина</name>
+            <surname>Иванова</surname>
+            <patronymic>Ивановна</patronymic>
+            <birthadate>03.03.2015</birthadate>
+            <birthplace>Москва</birthplace>
+        </dauther>
+        <sun>
+            <name>Василий</name>
+            <surname>Иванов</surname>
+            <patronymic>Иванович</patronymic>
+            <birthadate>04.04.2020</birthadate>
+            <birthplace>Мосвка</birthplace>
+        </sun>
+    </family>
+    <pets>
+        <cat>
+            <name>Барсик</name>
+            <years_old>3</years_old>
+        </cat>
+        <dog>
+            <name>Лесси</name>
+            <years_old>4</years_old>
+        </dog>
+        <parrot>
+            <name>Кеша</name>
+            <years_old>1</years_old>
+        </parrot>
+    </pets>
+
+    <phone>8 926 766 48 48</phone>
+    </person>
