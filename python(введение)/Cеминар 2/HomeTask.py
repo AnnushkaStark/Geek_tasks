@@ -19,7 +19,7 @@ def coin():
         return 'Вы ввели не число'
     except KeyboardInterrupt:
         return "Ведены не все данные"
-print(coin())
+#print(coin())
 
 def watermelon_for_tescha():
     '''Эта функция решает впрос с арбузом для тещи'''
@@ -33,7 +33,7 @@ def watermelon_for_tescha():
         return 'Вы ввели не число'
     except KeyboardInterrupt:
         return "Ведены не все данные"
-print(watermelon_for_tescha())
+#print(watermelon_for_tescha())
 
 def guess_numbers():
     '''Эта функция находит 2 загаданных числа'''
@@ -55,16 +55,23 @@ def guess_numbers():
     except KeyboardInterrupt:
         return "Ведены не все данные"
 
-print(guess_numbers())
+#print(guess_numbers())
 
 def pow_two():
     '''Эта функция возвращает целые степени двойки от 1 го до введенного числа'''
     try:
         n = int(input('Введите число:  '))
         lst = []
-        for i in range(1,n+1):
-            lst.append(2**i)
-        return f' Целые степени двойки от одного до введенного числа это  - {lst}'
+        lst1 = []
+        lst =[2**i for i in range(1,n)]
+        lst1 = [2**i for i in range(1,n) if 2**i < n]
+        if  len(lst) != 0 and len(lst1) !=0:
+            return f' Целые степени двойки от одного до введенного числа это  - {lst},Целые степени двойки от одного до введенного числа не превосходящие это число это {lst1}'
+        elif  len(lst) != 0 and len(lst1) ==0:
+            return f' Целые степени двойки от одного до введенного числа это  - {lst},Целые степени двойки от одного до введенного числа не превосходящие это число это отсутствуют'
+        elif len(lst) == 0:
+            return 'Целые степени двойки от одного до вашего числа отсутствуют'
+            
     except ValueError:
         return 'Вы ввели не число'
     except KeyboardInterrupt:
