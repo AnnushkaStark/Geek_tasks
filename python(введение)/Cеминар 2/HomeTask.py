@@ -19,7 +19,7 @@ def coin():
         return 'Вы ввели не число'
     except KeyboardInterrupt:
         return "Ведены не все данные"
-#print(coin())
+print(coin())
 
 def watermelon_for_tescha():
     '''Эта функция решает впрос с арбузом для тещи'''
@@ -33,7 +33,7 @@ def watermelon_for_tescha():
         return 'Вы ввели не число'
     except KeyboardInterrupt:
         return "Ведены не все данные"
-#print(watermelon_for_tescha())
+print(watermelon_for_tescha())
 
 def guess_numbers():
     '''Эта функция находит 2 загаданных числа'''
@@ -55,7 +55,7 @@ def guess_numbers():
     except KeyboardInterrupt:
         return "Ведены не все данные"
 
-#print(guess_numbers())
+print(guess_numbers())
 
 def pow_two():
     '''Эта функция возвращает целые степени двойки от 1 го до введенного числа'''
