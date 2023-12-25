@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" filename="{{url_for('static',filename='css//favicon.ico')}}" type="img/x-icon">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/fontello.css')}}">
+    
+    <title>Shop</title>
+</head>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col12">
+                <p class="text-center text-red"><a class="text-center text-red"href="{{url_for('index')}}">Home</a>
+                     <a class="text-center text-red"href="{{url_for('clothers_page')}}">Clothers</a>
+                            <a class="text-center text-red"href="{{url_for('boots_page')}}">Boots</a>
+                                 <a class="text-center text-red"href="{{url_for('hats_page')}}">Hats</a></p>
+                
+                <h1 class="text-center text-red">Shop</h1>
+                  
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
+<footer id="footer"><p class="text-center text-red">@2023</p> 
+    <p class="text-center text-red"><a class="text-center text-red"href="{{url_for('index')}}">Home</a>
+    <a class="text-center text-red"href="{{url_for('clothers_page')}}">Clothers</a>
+         <a class="text-center text-red"href="{{url_for('boots_page')}}">Boots</a>
+             <a class="text-center text-red"href="{{url_for('hats_page')}}">Hats</a></p>
+</footer>
+<body>
+    <script src="{{url_for('static',filename= 'js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>
