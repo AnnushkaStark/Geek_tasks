@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class=" container">
+    <div class="row">
+        <div class = "col12">
+          <p style="text-align: center;"><img src="{{url_for('static',filename='cat_user.jpg')}}" alt="cat" class="img-thumbnail" width="300" height="300"></p> 
+        </div>
+    </div>
+</div>
+{% if username %}
+<div class=" container">
+  <div class="row">
+      <div class = "col12">
+        <p style="text-align: center; size:300%;">Привет {{username}}</p> 
+      </div>
+  </div>
+</div>
+<div class=" container">
+  <div class="row">
+      <div class = "col12">
+        <form method="post">
+          <button type="button" class="btn btn-primary" value="sumbit_button" name="logout">Выход</button>
+        </form>
+      </div>
+  </div>
+</div>
+{% else  %}
+{% endif %}
+{% endblock %}
