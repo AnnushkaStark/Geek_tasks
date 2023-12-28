@@ -24,8 +24,8 @@ def index():
         username = request.form.get("username")
         email = request.form.get("email")
         if len(email) != 0 and len(username) != 0:
-            response.set_cookie("username", value="username", max_age=None)
-            response.set_cookie("email", value="email", max_age=None)
+            cookie_name = response.set_cookie("username", value="username", max_age=None)
+            cookie_mail = response.set_cookie("email", value="email", max_age=None)
             session["usename"] = username
             print(request.form)
             print(response)
@@ -35,18 +35,22 @@ def index():
 
 
 @app.route("/user/<string:username>/", methods=["GET", "POST"])
-def user(username):
+def user(username, *args, **kwargs):
     """
     Старница приветствия ползователя
     """
+  
     if session:
-        response = make_response("Cookie clear")
         if request.method == "POST":
-            if request.cookies.get("username") and request.cookies.get("email"):
-                response.set_cookie("username", "")
-                response.set_cookie("email", "")
-                session.pop("username", None)
+            response = make_response("Cookie clear")
+            if request.cookies.get("sessionid") and request.cookies.get("session"):
+                response.set_cookie("username", "", expires=0)
+                response.set_cookie("email", "", expires=0)
+                print('Cookie удалены')
+                session.clear()
                 return redirect(url_for("index"))
+            print(request.cookies)
+            print(response)
             print("Не удалось очистить Cookie")
             return redirect(url_for("index"))
         return render_template("user.html", username=username)
