@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\USER\Desktop\Geek_Task_Clear\Geek_tasks\Flask\Seminar_1\venv"
+VIRTUAL_ENV="C:\Users\USER\Desktop\Geek_Task_Clear\Geek_tasks\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
