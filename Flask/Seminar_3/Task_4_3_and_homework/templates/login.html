@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class=" container">
+    <div class="row">
+        <div class="col12">
+            <br>
+            <h1 style="text-align: center;">Войти</h1>
+            <br>
+            <form method="post">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Адрес электронной почты</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Пароль</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                  <br>
+                <button type="submit" class="btn btn-dark">Войти</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
