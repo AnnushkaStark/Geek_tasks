@@ -117,7 +117,7 @@ def register_page():
                 return redirect(url_for("login_page"))
             flash("Некорректный ввод данных")
             return redirect(url_for("register_page"))
-        except FileNotFoundError:
+        except Exeptions as e:
             flash("Пользовтель с таким email уже стуществует")
             return redirect(url_for("register_page"))
     return render_template("register.html")
@@ -142,7 +142,7 @@ def login_page():
             print(user.password_hash)
             flash("Пользователь не найден")
             return redirect(url_for("login_page"))
-        except FileNotFoundError:
+        except Exeptions as e:
             flash("Ошибка ввода данных")
             return redirect(url_for("login_page"))
     return render_template("login.html")
