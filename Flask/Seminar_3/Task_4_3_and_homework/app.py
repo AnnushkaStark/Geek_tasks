@@ -33,8 +33,8 @@ def add_all_faculty():
     Заполение таблиц базы данных Факультет
     """
     facultetes = ["Химия", "Физика", "Биология", "Экономика", "Менеджмент"]
-    for  title in facultetes:
-        new_facultet = Faculty(title= title)
+    for title in facultetes:
+        new_facultet = Faculty(title=title)
         db.session.add(new_facultet)
     db.session.commit()
 
@@ -105,10 +105,10 @@ def register_page():
             if password == password_2:
                 password_hash = generate_password_hash(password)
                 new_user = User(
-                    first_name = first_name,
-                    last_name = last_name,
-                    email = email,
-                    password_hash = password_hash,
+                    first_name=first_name,
+                    last_name=last_name,
+                    email=email,
+                    password_hash=password_hash,
                 )
                 db.session.add(new_user)
                 db.session.commit()
@@ -123,8 +123,7 @@ def register_page():
     return render_template("register.html")
 
 
-
-@app.route("/login/", methods =["GET","POST"])
+@app.route("/login/", methods=["GET", "POST"])
 def login_page():
     """
     Страница входа
@@ -134,23 +133,44 @@ def login_page():
         try:
             form_email = request.form["email"]
             form_password = request.form["password"]
-            print(form_email)
-            user = User.query.filter_by(email = form_email)
-            print(user)
-            if user and check_password_hash(form_password):
-                session["first_name"]= user.first_name
+            user = User.query.filter_by(email=form_email).first()
+            if user and check_password_hash(user.password_hash, form_password):
+                session["first_name"] = user.first_name
                 session["email"] = form_email
                 flash(f"Привет {user.first_name}")
-                return redirect(url_for("user"))
+                return redirect(url_for("user", username=session["first_name"]))
+            print(user.password_hash)
             flash("Пользователь не найден")
             return redirect(url_for("login_page"))
-        except Exception as e:
+        except FileNotFoundError:
             flash("Ошибка ввода данных")
             return redirect(url_for("login_page"))
     return render_template("login.html")
 
 
-                             
+@app.route("/user/<string:username>/", methods=["GET", "POST"])
+def user(username, *args, **kwargs):
+    """
+    Старница пользователя
+    вывод оценок студентов (задача с семинара)
+    """
+    if session:
+        scores_list = {}
+        for student in Student.query.all():
+            temp = Rates.query.filter(Rates.student_pk == student.pk).all()
+            scores_list[student] = temp or []
+
+        context = {
+            "scores_list": scores_list,
+            "title": "Студенты и оценки",
+        }
+        if request.method == "POST":
+            session.clear()
+            flash("Спасибо за посещение нащего сайта")
+            return redirect(url_for("index"))
+        return render_template("user.html", **context)
+
+    return redirect(url_for("index"))
 
 
 if __name__ == "__main__":

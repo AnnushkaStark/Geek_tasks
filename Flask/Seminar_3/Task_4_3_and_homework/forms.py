@@ -20,7 +20,6 @@ class LoginForm(FlaskForm):
     """
     Форма логина
     """
+
     email = EmailField(name="email")
     password = PasswordField(name="password")
-    
-        
