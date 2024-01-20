@@ -27,6 +27,19 @@ async def get_all_tasks():
     return {"tasks": TASKS}
 
 
+@app.get("/tasks/{task_id}")
+async def get_one_task(task_id: int):
+    """
+    Вывод одной задачи по ID
+    """
+    try:
+        for task in TASKS:
+            if task.id_ == task_id:
+                return {"Найдена задача": task}
+    except HTTPException:
+        return {"Не найдено": task_id}
+
+
 @app.post("/task/new_task/")
 async def add_new_task(task: Task):
     """
