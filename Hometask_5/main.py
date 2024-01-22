@@ -27,17 +27,16 @@ async def get_all_tasks():
     return {"tasks": TASKS}
 
 
-@app.get("/tasks/{task_id}")
+@app.get("/tasks/{task_id}", response_class=Union[JSONResponse, HTTPException])
 async def get_one_task(task_id: int):
     """
     Вывод одной задачи по ID
     """
-    try:
-        for task in TASKS:
-            if task.id_ == task_id:
-                return {"Найдена задача": task}
-    except HTTPException:
-        return {"Не найдено": task_id}
+    for task in TASKS:
+        if task.id_ == task_id:
+            return JSONResponse(content=vars(task), status_code=200)
+
+    raise HTTPException(status_code=404, detail="Task not found")
 
 
 @app.post("/task/new_task/")
