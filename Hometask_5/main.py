@@ -24,7 +24,7 @@ async def get_all_tasks():
     Функция вывода
     всех задач
     """
-    return {"tasks": TASKS}
+    return JSONResponse(content=str([vars(task) for task in TASKS]), status_code=200)
 
 
 @app.get("/tasks/{task_id}", response_class=Union[JSONResponse, HTTPException])
