@@ -18,7 +18,7 @@ class Task(BaseModel):
     status: str
 
 
-@app.get("/tasks/")
+@app.get("/tasks/", response_class=JSONResponse)
 async def get_all_tasks():
     """
     Функция вывода
