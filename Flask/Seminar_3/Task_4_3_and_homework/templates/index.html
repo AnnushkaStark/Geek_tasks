@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class=" container">
+    <div class="row">
+        <div class = "col12">
+          <br>
+          <p style="text-align: center;"><button type="button" class="btn btn-dark"><a style="color: white; text-decoration: none; " href="{{ url_for('register_page') }}">Регистрация</a></button></p> 
+          <br>
+          <p style="text-align: center;"><button type="button" class="btn btn-dark"><a style="color: white; text-decoration: none; " href="{{ url_for('login_page') }}">Войти</a></button></p> 
+          <br>
+          <br>
+          <p style="text-align: center;"><img src="{{url_for('static',filename='Faculty.jpg')}}" alt="cat" class="img-thumbnail" width="300" height="300"></p>
+  
+        </div>
+    </div>
+</div>
+<div class=" container">
+  <div class="row">
+      <div class = "col12">
+       
+      </div>
+    </div>
+</div>
+{% endblock %}
