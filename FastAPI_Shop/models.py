@@ -9,10 +9,10 @@ class UserIn(BaseModel):
     Модель пользователя без ID
     """
 
-    first_name: str = Field(..., title="Имя", min_length=5, max_length=15)
-    last_name: str = Field(..., title="Фамилия", min_length=5, max_length=15)
-    email: str = Field(..., title="Электронная почта", min_length=5, max_length=15)
-    password: str = Field(..., title="Пароль", min_length=5, max_length=15)
+    first_name: str = Field(..., title="Имя", min_length=5, max_length=50)
+    last_name: str = Field(..., title="Фамилия", min_length=5, max_length=50)
+    email: str = Field(..., title="Электронная почта", min_length=5, max_length=50)
+    password: str = Field(..., title="Пароль", min_length=5, max_length=50)
 
 
 class ProductIn(BaseModel):
@@ -30,10 +30,10 @@ class OrderIn(BaseModel):
     Модель заказа без ID
     """
 
-    client: int = Field(..., title="Покупатель")
+    user_id: int = Field()
+    product_id: int = Field()
     create_at: datetime = None
-    product: int = Field(..., title="Товар")
-    status : str = Field(..., title="Статус", min_length=10, max_length=50)
+    status: str = Field(..., title="Статус", min_length=10, max_length=50)
 
 
 # =========Mодели с ID==============#
@@ -45,10 +45,10 @@ class User(BaseModel):
     """
 
     id: int
-    first_name: str = Field(..., title="Имя", min_length=5, max_length=15)
-    last_name: str = Field(..., title="Фамилия", min_length=5, max_length=15)
-    email: str = Field(..., title="Электронная почта", min_length=5, max_length=15)
-    password: str = Field(..., title="Пароль", min_length=5, max_length=15)
+    first_name: str = Field(..., title="Имя", min_length=5, max_length=50)
+    last_name: str = Field(..., title="Фамилия", min_length=5, max_length=50)
+    email: str = Field(..., title="Электронная почта", min_length=5, max_length=50)
+    password: str = Field(..., title="Пароль", min_length=5, max_length=50)
 
 
 class Product(BaseModel):
@@ -68,7 +68,7 @@ class Order(BaseModel):
     """
 
     id: int = Field(...)
-    client: int = Field(..., title="Покупатель")
-    create_at:  datetime = None
-    product: int = Field(..., title="Товар")
-    status : str = Field(..., title="Статус", min_length=10, max_length=50)
+    user_id: int = Field()
+    product_id: int = Field()
+    create_at: datetime = None
+    status: str = Field(..., title="Статус", min_length=5, max_length=50)
