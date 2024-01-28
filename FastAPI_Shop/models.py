@@ -30,9 +30,9 @@ class OrderIn(BaseModel):
     Модель заказа без ID
     """
 
-    client: UserIn = Field(..., title="Покупатель")
+    client: int = Field(..., title="Покупатель")
     create_at: datetime = None
-    product: ProductIn = Field(..., title="Товар")
+    product: int = Field(..., title="Товар")
     status : str = Field(..., title="Статус", min_length=10, max_length=50)
 
 
@@ -67,8 +67,8 @@ class Order(BaseModel):
     Модель заказа c ID
     """
 
-    id: int
-    client: User = Field(..., title="Покупатель")
-    create_at: None
-    product: Product = Field(..., title="Товар")
+    id: int = Field(...)
+    client: int = Field(..., title="Покупатель")
+    create_at:  datetime = None
+    product: int = Field(..., title="Товар")
     status : str = Field(..., title="Статус", min_length=10, max_length=50)

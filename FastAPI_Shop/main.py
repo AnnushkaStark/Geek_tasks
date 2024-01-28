@@ -7,6 +7,7 @@ from typing import List
 from models import UserIn, User, ProductIn, Product, OrderIn, Order
 import random
 from datetime import datetime
+from sqlalchemy import func
 
 DATABASE_URL = "sqlite:///shop.db"
 database = databases.Database(DATABASE_URL)
@@ -49,7 +50,7 @@ Orders = sqlalchemy.Table(
     sqlalchemy.Column("user_id", sqlalchemy.ForeignKey("Users.id")),
     sqlalchemy.Column("product_id", sqlalchemy.ForeignKey("Products.id")),
     sqlalchemy.Column(
-        "create_at", sqlalchemy.DateTime, nullable=False, default=datetime.now()
+        "create_at", sqlalchemy.DateTime, nullable=False, default = func.now(),
     ),
     sqlalchemy.Column("status", sqlalchemy.String, nullable=False)
    
@@ -57,7 +58,7 @@ Orders = sqlalchemy.Table(
 )
 
 
-enginie = sqlalchemy.create_engine(DATABASE_URL)
+enginie = sqlalchemy.create_engine(DATABASE_URL, connect_args = {"check_same_thread":False})
 metadata.create_all(enginie)
 
 app = FastAPI()
@@ -130,6 +131,7 @@ async def make_fake_orders(count:int):
         query = Orders.insert().values(
             user_id = random.randint(0,count),
             product_id = random.randint(0,count),
+            create_at =  datetime.now(),
             status = f"example_satus    {i}"
         )
         await database.execute(query)
@@ -150,7 +152,7 @@ async def get_all_users():
     return await database.fetch_all(query)
 
 
-@app.get("/all_product/", response_model = List[Product])
+@app.get("/all_product/",response_model=List[Product])
 async def get_all_products():
     """
     Получение всех товаров
@@ -169,3 +171,41 @@ async def get_all_orders():
     query = Orders.select()
     
     return await database.fetch_all(query)
+
+
+
+# Получение одного экземпляра из модели
+#========================================
+
+
+# Cоздание одного экземпляра модели
+#=====================================
+
+@app.post("/users/", response_model=Users)
+async def create_user(user: UserIn):
+    """
+    Создание пользователя
+    """
+    query = Users.insert().values(**user.model_dump())
+    record_id = await database.execute(query)
+    return{**user.model_dump(), "id": record_id}
+
+
+@app.post("/products/", response_model=Products)
+async def create_product(product: ProductIn):
+    """
+    Создание товара
+    """
+    query = Products.insert().values(**product.model_dump())
+    record_id = await database.execute(query)
+    return{**product.model_dump(), "id": record_id}
+
+
+@app.post("/orders/", response_model=Orders)
+async def create_order(order: OrderIn):
+    """
+    Создание заказа
+    """
+    query = Orders.insert().values(**order.model_dump())
+    record_id = await database.execute(query)
+    return{**order.model_dump(), "id": record_id}
